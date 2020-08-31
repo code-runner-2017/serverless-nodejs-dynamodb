@@ -46,7 +46,9 @@ module.exports.submit = (event, context, callback) => {
     });
 };
 
-
+///////////////////////////////////////////////////
+// Saves a 'candidate' object in dynamodb
+//
 const submitCandidateP = candidate => {
   console.log('Submitting candidate');
   const candidateInfo = {
@@ -57,6 +59,10 @@ const submitCandidateP = candidate => {
     .then(res => candidate);
 };
 
+///////////////////////////////////////////////////
+// Starting from the request parameters, creates the json object to be
+// saved in dynamodb, adding additional fields such as 'id' and timestamps.
+//
 const candidateInfo = (fullname, email, experience) => {
   const timestamp = new Date().getTime();
   return {
